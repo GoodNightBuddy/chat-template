@@ -1,0 +1,48 @@
+@import "../../vars/vars";
+
+.message__receiver,
+.message__sender {
+  box-sizing: border-box;
+  padding: 15px;
+  align-items: center;
+
+  & .message__text {
+    word-wrap: break-word;
+    max-width: 90%;
+    line-height: $line-height-normal;
+    display: inline-block;
+    border-radius: 40px;
+    background-color: $message-sender;
+    color: white;
+    padding: 15px 20px 15px 20px;
+  }
+}
+
+.message__receiver {
+    text-align: right;
+
+  & .message__text {
+    text-align: left;
+    background-color: $message-receiver;
+    color: black;
+  }
+}
+
+.message__sender {
+  & .message__main {
+    display: flex;
+    align-items: center;
+  }
+
+  & .message__text {
+    margin-left: 10px;
+  }
+}
+
+
+
+.message__time  {
+  margin: 0 0 0 80px;
+  font-size: small;
+  color: $text-secondary;
+}

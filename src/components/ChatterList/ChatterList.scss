@@ -1,0 +1,91 @@
+@import "../../vars/vars";
+
+.chattersList {
+  height: calc(100vh - 175px);
+  overflow: auto;
+}
+
+.chattersList__title {
+  font-weight: 400;
+  font-size: 32px;
+  color: #009ef0;
+
+  margin: 50px 20px;
+}
+
+.chatter {
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+
+  border-bottom: 2px $background-secondary solid;
+  padding: 20px;
+
+  transition: background-color .2s linear;
+
+  &:hover {
+    background-color: $background-primary;
+  }
+
+  & p {
+    margin: 0;
+  }
+}
+
+.chatter__info {
+  display: flex;
+  width: 100%
+}
+
+
+.chatter__detail {
+  margin-left: 10px;
+  width: 100%;
+}
+
+.detail__name {
+  font-size: 18px;
+}
+
+.detail__message {
+  word-break: break-word;
+  color: $text-secondary;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow-x: clip;
+  max-width: 293px;
+}
+
+.chatter__time {
+  white-space: nowrap;
+}
+
+.chatter__detail-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chattersList::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.chattersList::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.chattersList::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.chattersList::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.chattersList::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, .9);
+}

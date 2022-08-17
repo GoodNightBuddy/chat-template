@@ -1,0 +1,19 @@
+@import "../../vars/vars";
+
+.sidebar {
+  box-sizing: border-box;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+  width: $sidebar-size;
+  border-right: 1px solid $text-secondary;
+}
+
+.sidebar__header {
+  height: 175px;
+  box-sizing: border-box;
+  padding: 10px 5px;
+  background-color: $background-secondary;
+  border-bottom: 1px solid $text-secondary;
+
+}
