@@ -1,5 +1,4 @@
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { auth } from 'firebaseui';
 import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import ChatBody from './components/ChatBody/ChatBody';
@@ -7,28 +6,26 @@ import Chat from './components/hoc/Chat';
 import SignInPage from './components/pages/SignInPage/SignInPage';
 import SignUpPage from './components/pages/SignUpPage/SignUpPage';
 import RoutePath from './enums/routes';
+import { authActionCreator } from './store/action';
+import { useAppDispatch, useAppSelector } from './store/store';
 
 function App() {
 
-  const auth = getAuth()
+  const dispatch = useAppDispatch();
+  const auth = getAuth();
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log(user);
-        const { email, id } = user
-
-        // setUser({email, token, id})
-
-
-      } else {
-        console.log('out');
-
+      if (user) {   
+        const { email, uid: id } = user;
+        dispatch(authActionCreator.setUser({email, id}))
       }
     })
+    return unsubscribe;
+  });
 
-    return unsubscribe
-  })
+  const state = useAppSelector(state => state.auth);
 
+  console.log(state)
 
   return (
     <Routes>
