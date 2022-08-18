@@ -1,5 +1,5 @@
 import {useContext, useState} from 'react';
-import classes from './message-input.module.scss';
+import'./MessageInput.scss';
 import {useParams} from "react-router-dom";
 import { UserContext } from '../../context/UserContext';
 
@@ -22,9 +22,7 @@ const MessageInput = () => {
     if (e.keyCode === 13) {
       appendMessage(createMessage(value));
 
-      fetch('https://api.chucknorris.io/jokes/random', {
-        method: 'GET'
-      })
+      fetch('https://api.chucknorris.io/jokes/random', {method: 'GET'})
         .then(res => res.json())
         .then(data => {
           setTimeout(() => {
@@ -40,7 +38,7 @@ const MessageInput = () => {
       <input
         type="text"
         placeholder="Type your message"
-        className={classes.search}
+        className={'search-input'}
         value={value}
         onChange={(e) => setValue(e.target.value)}
         onKeyUp={handleKeypress}

@@ -23,7 +23,7 @@ const Sidebar = () => {
     <aside className="sidebar">
       <div className="sidebar__header">
         <UserIcon
-          imgUrl="https://placeimg.com/64/64/any"
+          imgUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf-_eFTxpPLfn16swgOup3z7QLLblNK_mq2Q&usqp=CAU"
         />
         <Search value={search} setValue={setSearch}/>
       </div>

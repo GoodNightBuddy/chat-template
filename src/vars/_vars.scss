@@ -9,3 +9,118 @@ $sidebar-size: 400px;
 $main-size: calc(100% - 400px);
 
 $line-height-normal: 20px;
+
+/* sign in/sign up pages */
+
+main {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  height: 100vh;
+  align-content: center;
+}
+
+
+.sign-up-page,
+.sign-in-page {
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-up-form,
+.sign-in-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 340px;
+  margin-bottom: 30px;
+}
+
+.sign-up-form__title,
+.sign-in-form__title {
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.sign-up-form__link,
+.sign-in-form__link {
+  color: $text-secondary;
+  transition: 0.1s color ease;
+}
+
+.sign-up-form__link:hover,
+.sign-in-form__link:hover {
+  color: $message-receiver;
+}
+
+:focus,
+:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 2px $message-sender;
+}
+
+:focus:not(:focus-visible) {
+  outline: 0;
+  box-shadow: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+input,
+button,
+select {
+  color: inherit;
+  font-family: inherit;
+}
+
+
+/* input */
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input__heading {
+  font-size: var(--font-size-100);
+  line-height: 1;
+}
+
+.input input {
+  min-width: 160px;
+  min-height: 45px;
+  padding: 10px 15px;
+  background-color: $background-secondary;
+  border: none;
+  border-radius: 1px;
+  cursor: text;
+  appearance: none;
+}
+
+.button {
+  display: block;
+  width: 100%;
+  min-height: 45px;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  background-color: $text-secondary;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.button:hover {
+  background-color: $message-sender;
+}

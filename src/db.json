@@ -3,37 +3,25 @@
     {
       "id": 1,
       "name": "Alice Freeman",
-      "image": "https://cdn-icons-png.flaticon.com/512/147/147144.png",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEOvNEamDfdBUPVdiHwnj9bR7T-8UWhJbEwA&usqp=CAU",
       "read": true
     },
     {
       "id": 2,
       "name": "Josefina",
-      "image": "https://cdn-icons-png.flaticon.com/512/147/147140.png",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs4DHZgpldGFuO32ysSj843JRWzayTaUACoQ&usqp=CAU",
       "read": true
     },
     {
       "id": 3,
       "name": "Barrera",
-      "image": "https://cdn.icon-icons.com/icons2/1999/PNG/512/avatar_guard_people_person_profile_user_icon_123363.png",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiFNPBKi-2IFW3U8olqtEBq7f3pb4i2PwxUg&usqp=CAU",
       "read": true
     },
     {
       "id": 4,
       "name": "Carl",
-      "image": "https://cdn.icon-icons.com/icons2/2122/PNG/512/doctor_medical_avatar_people_icon_131305.png",
-      "read": false
-    },
-    {
-      "id": 3,
-      "name": "Barrera",
-      "image": "https://cdn.icon-icons.com/icons2/1999/PNG/512/avatar_guard_people_person_profile_user_icon_123363.png",
-      "read": true
-    },
-    {
-      "id": 4,
-      "name": "Carl",
-      "image": "https://cdn.icon-icons.com/icons2/2122/PNG/512/doctor_medical_avatar_people_icon_131305.png",
+      "image": "https://img-09.stickers.cloud/packs/8e647817-faaa-4abd-906b-ea3dbdc457bb/webp/1010bca0-d71a-470f-9b7b-df1fac0b1400.webp",
       "read": false
     }
   ],

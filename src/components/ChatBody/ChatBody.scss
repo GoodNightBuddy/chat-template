@@ -48,3 +48,23 @@
   border-top: 1px $text-secondary solid;
   background-color: $background-secondary;
 }
+
+.chat__messagelist::-webkit-scrollbar {
+  width: 15px;
+  height: 5px;
+}
+
+.chat__messagelist::-webkit-scrollbar-track {
+  border-radius: 2px;
+  background: #fff;
+}
+
+.chat__messagelist::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.2);
+
+}
+
+.chat__messagelist::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, .4);
+}

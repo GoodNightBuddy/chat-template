@@ -1,19 +1,18 @@
-import React from 'react';
 import checked from "./checked.png";
-import classes from './userIcon.module.scss';
+import './UserIcon.scss';
 
 const UserIcon = ({imgUrl = "https://via.placeholder.com/64", read = false}) => {
   return (
-    <div className={classes.user__icon}>
+    <div className={'user__icon'}>
       <img
         src={imgUrl}
         alt="userName"
-        className={classes.icon}
+        className={'icon'}
       />
       {read && <img
         src={checked}
         alt="read"
-        className={classes.user__read}
+        className={'user__read'}
       />
       }
     </div>

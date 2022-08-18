@@ -25,7 +25,7 @@ const Chatter = ({ user, messages }) => {
 
 
   return (
-    <Link to={'/chats/' + user.id} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <Link to={'/' + user.id} style={{ textDecoration: 'none', color: 'inherit' }}>
       <div className="chatter">
         <div className="chatter__info">
           <UserIcon

@@ -11,7 +11,7 @@ const ChatBody = () => {
   const [user, setUser] = useState({});
   const [currentChatMessages, setCurrentChatMessages] = useState([]);
   const { users, messages } = useContext(UserContext);
-  const scrollElement = useRef(null);
+  // const scrollElement = useRef(null);
   const { id } = useParams();
 
   useEffect(() => {
