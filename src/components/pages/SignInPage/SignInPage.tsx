@@ -19,7 +19,7 @@ const SignInPage: React.FC = () => {
         email,
         password
       }
-
+      
       // dispatch(authActionCreator.signIn(user))
     }
   }
@@ -42,7 +42,7 @@ const SignInPage: React.FC = () => {
             <button className="button" type="submit">Sign In</button>
           </form>
           <span>
-            Don't have an account?
+            Don't have an account?&nbsp;
             <Link to={'/sign-up'} className="sign-in-form__link">Sign Up</Link>
           </span>
         </main>}

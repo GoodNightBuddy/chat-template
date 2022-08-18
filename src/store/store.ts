@@ -1,21 +1,24 @@
-// import { configureStore } from "@reduxjs/toolkit";
-// import { authReducer } from "./rootReducer";
+import { configureStore } from "@reduxjs/toolkit";
+import { authReducer } from "./rootReducer";
 
 
 
-// const store = configureStore({
-//   reducer: {
-//     auth: authReducer,
-//     // trips: tripsReducer,
-//     // bookings: bookingsReducer
-//   },
-//   middleware: getDefaultMiddleware => getDefaultMiddleware({
-//     thunk: {
-//       extraArgument: {
-//         // хотів зробити як в міні проекті, щоб було гарніше, але не встиг
-//       }
-//     }
-//   }),
-// })
+const store = configureStore({
+  reducer: {
+    auth: authReducer,
+    // trips: tripsReducer,
+    // bookings: bookingsReducer
+  },
+  middleware: getDefaultMiddleware => getDefaultMiddleware({
+    thunk: {
+      extraArgument: {
+        // хотів зробити як в міні проекті, щоб було гарніше, але не встиг
+      }
+    }
+  }),
+})
 
-// export { store };
+export { store };
+export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
+
