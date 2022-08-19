@@ -21,7 +21,7 @@ const SignInPage: React.FC = () => {
   const signInFacebook: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
     const auth = getAuth();
-   const provider = new FacebookAuthProvider();;
+    const provider = new FacebookAuthProvider();;
     signInWithPopup(auth, provider)
       .then((result) => {
         // const credential = FacebookAuthProvider.credentialFromResult(result)!;
@@ -29,7 +29,15 @@ const SignInPage: React.FC = () => {
         console.log(user);
       })
       .catch((error) => {
-        console.log(error);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = FacebookAuthProvider.credentialFromError(error);
+        console.log(credential);
+        
+
       });
   }
 
