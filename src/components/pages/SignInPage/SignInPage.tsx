@@ -1,4 +1,4 @@
-import { FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { FacebookAuthProvider, getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Loader } from '../../Loader/Loader';
@@ -21,7 +21,7 @@ const SignInPage: React.FC = () => {
   const signInWithFacebook: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
     const auth = getAuth();
-    const provider = new FacebookAuthProvider();;
+    const provider = new FacebookAuthProvider();
     signInWithPopup(auth, provider)
       .catch((error) => {
        console.log(error);
@@ -31,7 +31,7 @@ const SignInPage: React.FC = () => {
   const signInWithGithub: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
     const auth = getAuth();
-    const provider = new FacebookAuthProvider();;
+    const provider = new GithubAuthProvider();
     signInWithPopup(auth, provider)
       .catch((error) => {
        console.log(error);
