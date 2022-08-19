@@ -1,4 +1,4 @@
-import { getAuth, signOut } from 'firebase/auth';
+import { deleteUser, getAuth, signOut } from 'firebase/auth';
 import React, { useContext, useEffect, useState } from 'react';
 import ChatterList from '../ChatterList/ChatterList';
 import { UserContext } from '../context/UserContext';
@@ -19,9 +19,16 @@ const Sidebar = () => {
     setSearchedUsers(users.filter(u => u.name.toLowerCase().includes(search.toLowerCase())))
     // eslint-disable-next-line
   }, [search, users]);
-  
+
   const signOuntHandler = () => {
     const auth = getAuth();
+    const user = auth.currentUser;
+    deleteUser(user)
+      .then(() => {
+      })
+      .catch((error) => {
+
+      });
     signOut(auth);
   };
 
