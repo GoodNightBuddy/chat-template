@@ -1,4 +1,4 @@
-import { getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Loader } from '../../Loader/Loader';
@@ -13,25 +13,23 @@ const SignInPage: React.FC = () => {
     const auth = getAuth();
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result)!;
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
-        console.log(user, token);
-        
-        // ...
-      }).catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
+  const signInFacebook: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault();
+    const auth = getAuth();
+   const provider = new FacebookAuthProvider();;
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // const credential = FacebookAuthProvider.credentialFromResult(result)!;
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
       });
   }
 
@@ -44,10 +42,7 @@ const SignInPage: React.FC = () => {
           const user = userCredential.user;
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorMessage);
-
+          console.log(error);
         });
     }
   }
@@ -69,6 +64,7 @@ const SignInPage: React.FC = () => {
             </label>
             <button className="button" type="submit">Sign In</button>
             <button className="button" onClick={signInGugol} >Sign in with gugol</button>
+            <button className="button" onClick={signInFacebook} >Sign in with facebook</button>
           </form>
           <span>
             Don't have an account?&nbsp;
