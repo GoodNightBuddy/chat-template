@@ -15,9 +15,14 @@ function App() {
   const auth = getAuth();
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {   
-        const { email, uid: id } = user;
-        dispatch(authActionCreator.setUser({email, id}))
+      if (user) {
+        console.log(user);
+        
+        const { email, uid: id, photoURL, displayName } = user;
+        dispatch(authActionCreator.setUser({ email, id, photoURL, displayName }))
+        
+      } else {
+        dispatch(authActionCreator.removeUser())
       }
     })
     return unsubscribe;
@@ -25,16 +30,23 @@ function App() {
 
   const state = useAppSelector(state => state.auth);
 
-  console.log(state)
+
+  if (state.id && state.email) {
+    return (
+      <Routes>
+        <Route path={RoutePath.ROOT} element={<Chat />}>
+          <Route path="/:id" element={<ChatBody />} />
+        </Route>
+        <Route path={RoutePath.ANY} element={<Navigate to={RoutePath.ROOT} replace />} />
+      </Routes>
+    )
+  }
 
   return (
     <Routes>
-      <Route path='/' element={<Chat />}>
-        <Route path="/:id" element={<ChatBody />} />
-        {/* <Route path={RoutePath.ANY} element={<Navigate to={RoutePath.SIGN_IN} replace />} /> */}
-      </Route>
-      <Route path={RoutePath.SIGN_UP} element={<SignUpPage />} />
       <Route path={RoutePath.SIGN_IN} element={<SignInPage />} />
+      <Route path={RoutePath.SIGN_UP} element={<SignUpPage />} />
+      <Route path={RoutePath.ANY} element={<Navigate to={RoutePath.SIGN_IN} replace />} />
     </Routes>
   );
 }

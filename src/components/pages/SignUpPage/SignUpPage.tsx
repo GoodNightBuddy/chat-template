@@ -10,39 +10,22 @@ import { setUser } from '../../../store/auth/actions';
 
 const SignUpPage: React.FC = () => {
 
-
-
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
-  // const [fullName, setFullName] = useState('')
-
-  // const isLoading = useAppSelector(state => state.auth.loading)
-  // const dispatch = useDispatch() as AppDispatch;
-
-  const auth = getAuth();
-
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async e => {
     e.preventDefault()
     if (password.length >= 3) {
-
-
+      const auth = getAuth();
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-          // Signed in 
           const user = userCredential.user;
-
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorMessage);
-
         });
-
-
-
-      // dispatch(authActionCreator.signUp({email, password}))
     }
   }
 

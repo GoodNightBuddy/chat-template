@@ -17,3 +17,42 @@
   border-bottom: 1px solid $text-secondary;
 
 }
+
+.for-dropdown:hover > .dropdown {
+  top: 0;
+}
+
+.dropdown {
+  background-color: var(--background-color1, #fff);
+  list-style: none;
+  border: 2px solid var(#dcdcdc);
+  border-radius: 5px;
+  width: 150px;
+  font-size: 1rem;
+  display: block;
+  position: absolute;
+  top: -15%;
+  left: 16%;
+  transition: all 0.3s ease-out;
+  transition-delay: 0.3s;
+
+  i {
+    padding: 8px 10px 8px 20px;
+  }
+
+  li {
+    width: 100%;
+    transition: background-color 0.25s ease-out;
+    cursor: pointer;
+  }
+
+  li:hover {
+    background-color: #dcdcdc;
+  }
+
+  li:last-child {
+    border-top: 2px solid #dcdcdc;
+    color: red;
+  }
+  
+}

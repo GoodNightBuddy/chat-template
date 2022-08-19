@@ -3,6 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 export interface IAuthState {
   email: string | null;
   id: string | null;
+  photoURL?: string | null;
+  displayName?: string | null;
 }
 
 const initialState: IAuthState = {
@@ -17,6 +19,8 @@ const userSlice = createSlice({
     setUser(state, action) {
       state.email = action.payload.email;
       state.id = action.payload.id;
+      state.photoURL = action.payload.photoURL ?? null;
+      state.displayName = action.payload.displayName ?? null;
     },
     removeUser(state) {
       state.email = null;
