@@ -1,14 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { TypedUseSelectorHook, useDispatch } from "react-redux";
-import { authReducer, messageReducer } from "./rootReducer";
+import { authReducer, messageReducer, userReducer } from "./rootReducer";
 
 
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
-    message: messageReducer
+    message: messageReducer,
+    user: userReducer
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware({
     thunk: {

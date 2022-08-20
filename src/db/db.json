@@ -3,25 +3,25 @@
     {
       "id": 1,
       "name": "Alice Freeman",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEOvNEamDfdBUPVdiHwnj9bR7T-8UWhJbEwA&usqp=CAU",
+      "photoURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEOvNEamDfdBUPVdiHwnj9bR7T-8UWhJbEwA&usqp=CAU",
       "read": true
     },
     {
       "id": 2,
       "name": "Josefina",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs4DHZgpldGFuO32ysSj843JRWzayTaUACoQ&usqp=CAU",
+      "photoURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRs4DHZgpldGFuO32ysSj843JRWzayTaUACoQ&usqp=CAU",
       "read": true
     },
     {
       "id": 3,
       "name": "Barrera",
-      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiFNPBKi-2IFW3U8olqtEBq7f3pb4i2PwxUg&usqp=CAU",
+      "photoURL": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiFNPBKi-2IFW3U8olqtEBq7f3pb4i2PwxUg&usqp=CAU",
       "read": true
     },
     {
       "id": 4,
       "name": "Carl",
-      "image": "https://img-09.stickers.cloud/packs/8e647817-faaa-4abd-906b-ea3dbdc457bb/webp/1010bca0-d71a-470f-9b7b-df1fac0b1400.webp",
+      "photoURL": "https://img-09.stickers.cloud/packs/8e647817-faaa-4abd-906b-ea3dbdc457bb/webp/1010bca0-d71a-470f-9b7b-df1fac0b1400.webp",
       "read": false
     }
   ],

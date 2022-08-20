@@ -1,3 +1,3 @@
 export {default as authReducer} from './auth/actions';
 export {default as messageReducer} from './messages/actions';
-// export {reducer as bookingsReducer} from './bookings/reducer';
+export {default as userReducer} from './users/actions';

@@ -2,10 +2,12 @@ import {useContext, useState} from 'react';
 import'./MessageInput.scss';
 import {useParams} from "react-router-dom";
 import { UserContext } from '../../context/UserContext';
+import { useAppDispatch } from '../../../store/store';
+import { messageActionCreator } from '../../../store/actionStore';
 
 const MessageInput = () => {
   const [value, setValue] = useState('');
-  const {appendMessage} = useContext(UserContext);
+  const dispatch = useAppDispatch();
   const params = useParams();
 
   const createMessage = (text, receiver = false) => {
@@ -20,14 +22,15 @@ const MessageInput = () => {
 
   function handleKeypress(e) {
     if (e.keyCode === 13) {
-      appendMessage(createMessage(value));
+      dispatch(messageActionCreator.setMessage(createMessage(value)));
+
       
 
       fetch('https://api.chucknorris.io/jokes/random', {method: 'GET'})
         .then(res => res.json())
         .then(data => {
           setTimeout(() => {
-            appendMessage(createMessage(data.value, true))
+            dispatch(messageActionCreator.setMessage(createMessage(data.value, true)));
 
           }, 10000)
         })

@@ -1,7 +1,7 @@
 import { deleteUser, getAuth, signOut } from 'firebase/auth';
-import React, { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useAppSelector } from '../../store/store';
 import ChatterList from '../ChatterList/ChatterList';
-import { UserContext } from '../context/UserContext';
 import Search from '../UI/Search/Search';
 import UserIcon from '../UI/UserIcon/UserIcon';
 import "./Sidebar.scss"
@@ -9,7 +9,7 @@ import "./Sidebar.scss"
 const Sidebar = () => {
   const [searchedUsers, setSearchedUsers] = useState([]);
   const [search, setSearch] = useState('');
-  const { users, messages } = useContext(UserContext);
+  const [users, messages] = useAppSelector(state => [state.user.users, state.message.messages]);
 
   useEffect(() => {
     setSearchedUsers(users)
@@ -27,7 +27,7 @@ const Sidebar = () => {
       .then(() => {
       })
       .catch((error) => {
-
+        console.log(error);
       });
     signOut(auth);
   };

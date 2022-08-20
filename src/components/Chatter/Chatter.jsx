@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import UserIcon from "../UI/UserIcon/UserIcon";
 import { Link } from "react-router-dom";
 import RoutePath from '../../enums/routes';
@@ -9,7 +9,7 @@ const Chatter = ({ user, messages }) => {
     day: "numeric",
     year: "numeric",
   }
-  const [lastMessage, setLastMessage] = useState("no message yet..");
+  const [lastMessage, setLastMessage] = useState("no messages yet...");
   const [lastMessageTime, setLastMessageTime] = useState("");
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Chatter = ({ user, messages }) => {
       <div className="chatter">
         <div className="chatter__info">
           <UserIcon
-            imgUrl={user.image}
+            imgUrl={user.photoURL}
             read={user.read}
           />
           <div className="chatter__detail">

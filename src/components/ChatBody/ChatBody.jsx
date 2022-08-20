@@ -1,19 +1,16 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import "./ChatBody.scss"
 import UserIcon from "../UI/UserIcon/UserIcon";
 import { useParams } from "react-router-dom";
 import Message from "../Message/Message";
 import MessageInput from "../UI/MessageInput/MessageInput";
-import { UserContext } from '../context/UserContext';
 import { useAppSelector } from '../../store/store';
 
 const ChatBody = () => {
 
   const [user, setUser] = useState({});
   const [currentChatMessages, setCurrentChatMessages] = useState([]);
-  // const { users, messages } = useContext(UserContext);
-  const { users } = useContext(UserContext);
-  const messages = useAppSelector(state => state.message.messages)
+  const [users, messages] = useAppSelector(state => [state.user.users, state.message.messages]);
   // const scrollElement = useRef(null);
   const { id } = useParams();
 
@@ -23,16 +20,17 @@ const ChatBody = () => {
     curMessages.sort((a, b) => new Date(a.time) - new Date(b.time));
     setCurrentChatMessages(curMessages);
   }, [id, messages, users])
+  
 
   return (
     <div className="chat__body">
       <div className="chat__header">
-        <UserIcon imgUrl={user.image} />
+        <UserIcon imgUrl={user.photoURL} />
         <h1 className="chat__username">{user.name}</h1>
       </div>
 
       <div className="chat__messagelist">
-        {currentChatMessages.map((e, i) => <Message message={e} userImage={user.image} key={i} />)}
+        {currentChatMessages.map((e, i) => <Message message={e} userImage={user.photoURL} key={i} />)}
       </div>
 
       <div className="chat__input">

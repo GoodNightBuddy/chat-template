@@ -6,7 +6,7 @@ import Chat from './components/hoc/Chat';
 import SignInPage from './components/pages/SignInPage/SignInPage';
 import SignUpPage from './components/pages/SignUpPage/SignUpPage';
 import RoutePath from './enums/routes';
-import { authActionCreator } from './store/action';
+import { authActionCreator } from './store/actionStore';
 import { useAppDispatch, useAppSelector } from './store/store';
 
 function App() {
