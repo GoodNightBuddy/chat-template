@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import db from '../../db/db.json';
 
 export interface IMessage {
-  id: any;
+  id: number;
   chatId: number;
   receiver: boolean;
   text: string;
@@ -22,8 +22,8 @@ const messageSlice = createSlice({
   initialState,
   reducers: {
     setMessage(state, action) {
-      state.messages = [...state.messages, action.payload];
-      // localStorage.messages = JSON.stringify([...state.messages, action.payload])
+      state.messages.push(action.payload)
+      localStorage.messages = JSON.stringify(state.messages)
     },
     setMessages(state, action) {
       state.messages = action.payload;

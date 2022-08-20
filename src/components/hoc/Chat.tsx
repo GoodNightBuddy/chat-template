@@ -6,27 +6,20 @@ import Sidebar from '../Sidebar/Sidebar';
 
 const Chat: React.FC = () => {
 
-  const messages = useAppSelector(state => state.message.messages);
-  const users = useAppSelector(state => state.user.users);
+  const [users, messages] = useAppSelector(state => [state.user.users, state.message.messages]);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     if (!localStorage.users || !localStorage.messages.length) {
       localStorage.users = JSON.stringify(users);
       localStorage.messages = JSON.stringify(messages);
-    } else {
+    } else {      
       dispatch(userActionCreator.setUsers(JSON.parse(localStorage.users)));
       dispatch(messageActionCreator.setMessages(JSON.parse(localStorage.messages)));
     }
 
   }, [])
 
-  useEffect(() => {
-    localStorage.messages = JSON.stringify(messages)
-    // localStorage.users = JSON.stringify(users)
-    console.log(messages);
-    
-  }, [messages])
 
   return (
     <>

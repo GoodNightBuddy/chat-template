@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import "./ChatBody.scss"
 import UserIcon from "../UI/UserIcon/UserIcon";
 import { useParams } from "react-router-dom";
@@ -11,7 +11,6 @@ const ChatBody = () => {
   const [user, setUser] = useState({});
   const [currentChatMessages, setCurrentChatMessages] = useState([]);
   const [users, messages] = useAppSelector(state => [state.user.users, state.message.messages]);
-  // const scrollElement = useRef(null);
   const { id } = useParams();
 
   useEffect(() => {

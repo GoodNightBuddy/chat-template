@@ -1,7 +1,6 @@
-import {useContext, useState} from 'react';
+import {useState} from 'react';
 import'./MessageInput.scss';
 import {useParams} from "react-router-dom";
-import { UserContext } from '../../context/UserContext';
 import { useAppDispatch } from '../../../store/store';
 import { messageActionCreator } from '../../../store/actionStore';
 
@@ -13,7 +12,7 @@ const MessageInput = () => {
   const createMessage = (text, receiver = false) => {
     return {
       chatId: +params.id,
-      id: new Date(),
+      id: Math.random(),
       receiver,
       text,
       time: new Date(),
@@ -21,7 +20,7 @@ const MessageInput = () => {
   }
 
   function handleKeypress(e) {
-    if (e.keyCode === 13) {
+    if (e.keyCode === 13 && value.trim() !== '') {
       dispatch(messageActionCreator.setMessage(createMessage(value)));
 
       
