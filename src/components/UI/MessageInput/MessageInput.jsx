@@ -21,12 +21,14 @@ const MessageInput = () => {
   function handleKeypress(e) {
     if (e.keyCode === 13) {
       appendMessage(createMessage(value));
+      
 
       fetch('https://api.chucknorris.io/jokes/random', {method: 'GET'})
         .then(res => res.json())
         .then(data => {
           setTimeout(() => {
             appendMessage(createMessage(data.value, true))
+
           }, 10000)
         })
       setValue('')

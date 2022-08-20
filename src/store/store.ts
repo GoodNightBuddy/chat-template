@@ -1,22 +1,22 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { TypedUseSelectorHook, useDispatch } from "react-redux";
-import { authReducer } from "./rootReducer";
+import { authReducer, messageReducer } from "./rootReducer";
 
 
 
 const store = configureStore({
   reducer: {
     auth: authReducer,
-    // trips: tripsReducer,
-    // bookings: bookingsReducer
+    message: messageReducer
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware({
     thunk: {
       extraArgument: {
-        // хотів зробити як в міні проекті, щоб було гарніше, але не встиг
+        
       }
-    }
+    },
+    serializableCheck: false
   }),
 })
 

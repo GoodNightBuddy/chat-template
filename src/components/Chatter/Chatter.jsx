@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import UserIcon from "../UI/UserIcon/UserIcon";
 import { Link } from "react-router-dom";
+import RoutePath from '../../enums/routes';
 
 const Chatter = ({ user, messages }) => {
   const timeOptions = {
@@ -25,7 +26,7 @@ const Chatter = ({ user, messages }) => {
 
 
   return (
-    <Link to={'/' + user.id} style={{ textDecoration: 'none', color: 'inherit' }}>
+    <Link to={RoutePath.CHATS + user.id} style={{ textDecoration: 'none', color: 'inherit' }}>
       <div className="chatter">
         <div className="chatter__info">
           <UserIcon

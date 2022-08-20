@@ -5,12 +5,15 @@ import { useParams } from "react-router-dom";
 import Message from "../Message/Message";
 import MessageInput from "../UI/MessageInput/MessageInput";
 import { UserContext } from '../context/UserContext';
+import { useAppSelector } from '../../store/store';
 
 const ChatBody = () => {
 
   const [user, setUser] = useState({});
   const [currentChatMessages, setCurrentChatMessages] = useState([]);
-  const { users, messages } = useContext(UserContext);
+  // const { users, messages } = useContext(UserContext);
+  const { users } = useContext(UserContext);
+  const messages = useAppSelector(state => state.message.messages)
   // const scrollElement = useRef(null);
   const { id } = useParams();
 

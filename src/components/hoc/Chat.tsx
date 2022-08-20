@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Outlet } from "react-router-dom";
-import db from '../../db.json';
+import db from '../../db/db.json';
+import { messageActionCreator } from '../../store/action';
+import { useAppDispatch, useAppSelector } from '../../store/store';
 import { UserContext } from '../context/UserContext';
 import Sidebar from '../Sidebar/Sidebar';
 
@@ -24,34 +26,41 @@ type Message = {
 //   messages: Messages[];
 // }
 
+
 const Chat: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
-  const [messages, setMessages] = useState<Message[]>([]);
+  // const [messages, setMessages] = useState<Message[]>([]);
+
+
+  const messages = useAppSelector(state => state.message.messages);
+  const dispatch = useAppDispatch();
+
 
   useEffect(() => {
     if (!localStorage.users || !localStorage.messages.length) {
       setUsers(db.users);
-      setMessages(db.messages);
+      // setMessages(state.messages);
       localStorage.users = JSON.stringify(db.users);
-      localStorage.messages = JSON.stringify(db.messages);
-      console.log(db.messages);
+      localStorage.messages = JSON.stringify(messages);
 
     } else {
       const user = JSON.parse(localStorage.users);
-      const message = JSON.parse(localStorage.messages);
+      // const message = JSON.parse(localStorage.messages);
       setUsers(user)
-      setMessages(message)
-
+      // setMessages(message)
+      dispatch(messageActionCreator.setMessages(JSON.parse(localStorage.messages)))
     }
 
   }, [])
 
-  // useEffect(() => {
-  //   localStorage.messages = JSON.stringify(messages)
-  // }, [messages])
+  useEffect(() => {
+    localStorage.messages = JSON.stringify(messages)
+    console.log(messages);
+    
+  }, [messages])
 
   const appendMessage = (message: Message) => {
-    setMessages(mes => [...mes, message])
+    dispatch(messageActionCreator.setMessage(message))
   }
 
   return (

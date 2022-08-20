@@ -1,4 +1,4 @@
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, getIdToken, getIdTokenResult, onAuthStateChanged } from 'firebase/auth';
 import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import ChatBody from './components/ChatBody/ChatBody';
@@ -13,11 +13,12 @@ function App() {
 
   const dispatch = useAppDispatch();
   const auth = getAuth();
+  
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { email, uid: id, photoURL, displayName } = user;
-        dispatch(authActionCreator.setUser({ email, id, photoURL, displayName }))      
+        dispatch(authActionCreator.setUser({ email, id, photoURL, displayName }))
       } else {
         dispatch(authActionCreator.removeUser())
       }
@@ -27,14 +28,15 @@ function App() {
 
   const state = useAppSelector(state => state.auth);
 
-
   if (state.id && state.email) {
     return (
       <Routes>
         <Route path={RoutePath.ROOT} element={<Chat />}>
-          <Route path="/:id" element={<ChatBody />} />
+          <Route path={RoutePath.CHATS} element={<ChatBody />} >
+            <Route path={RoutePath.ID} element={<ChatBody />} />
+          </Route>
+          <Route path={RoutePath.ANY} element={<Navigate to={RoutePath.ROOT} replace />} />
         </Route>
-        <Route path={RoutePath.ANY} element={<Navigate to={RoutePath.ROOT} replace />} />
       </Routes>
     )
   }
