@@ -12,7 +12,6 @@ type ChatterProps = {
 }
 
 
-
 const Chatter = ({ user, messages }: ChatterProps) => {
   const timeOptions: DateTimeFormatOptions = {
     month: "short",

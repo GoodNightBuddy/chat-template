@@ -17,11 +17,9 @@ const Sidebar = () => {
 
   if (!user) {
     return (
-      <div>Oops. something</div>
+      <div>Oops, something went wrong, no such user</div>
     )
   }
-
-  console.log(auth);
 
   const searchedUsers = (users.filter(u => u.name.toLowerCase().includes(search.toLowerCase())))
 
@@ -42,7 +40,7 @@ const Sidebar = () => {
         <div className='user-info'>
           <div className='for-dropdown'>
             <UserIcon
-              imgUrl={user?.photoURL || defaultImage}
+              imgUrl={user.photoURL || defaultImage}
             />
             <ul className="dropdown">
               <li onClick={signOuntHandler}><i className="fa-solid fa-right-from-bracket"></i>Sign out</li>

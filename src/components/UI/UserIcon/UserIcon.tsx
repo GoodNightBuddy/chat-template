@@ -1,11 +1,17 @@
 import checked from "./checked.png";
 import './UserIcon.scss';
 
-const UserIcon = ({imgUrl = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf-_eFTxpPLfn16swgOup3z7QLLblNK_mq2Q&usqp=CAU", read = false}) => {
+type UserIconProps = {
+  imgUrl?: string;
+  read?: boolean;
+}
+
+const UserIcon = ({imgUrl, read = false}: UserIconProps) => {
+  const defaultImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf-_eFTxpPLfn16swgOup3z7QLLblNK_mq2Q&usqp=CAU"
   return (
     <div className={'user__icon'}>
       <img
-        src={imgUrl}
+        src={imgUrl || defaultImage}
         alt="userName"
         className={'icon'}
       />
