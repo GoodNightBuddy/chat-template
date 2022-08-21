@@ -18,27 +18,36 @@
 
 }
 
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
 .for-dropdown:hover > .dropdown {
   top: 0;
 }
 
+.user-info__user-name {
+  margin-left: 10px;
+}
+
 .dropdown {
-  background-color: var(--background-color1, #fff);
+  padding: 0;
+  background-color: #fff;
   list-style: none;
-  border: 2px solid var(#dcdcdc);
+  border: 2px solid #dcdcdc;
   border-radius: 5px;
-  width: 150px;
   font-size: 1rem;
   display: block;
   position: absolute;
-  top: -15%;
+  top: -14%;
   left: 16%;
   transition: all 0.3s ease-out;
   transition-delay: 0.3s;
 
-  i {
-    padding: 8px 10px 8px 20px;
-  }
+  // i {
+  //   padding: 8px 10px 8px 20px;
+  // }
 
   li {
     width: 100%;
