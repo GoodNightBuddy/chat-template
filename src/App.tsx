@@ -8,11 +8,14 @@ import SignUpPage from './components/pages/SignUpPage/SignUpPage';
 import RoutePath from './enums/routes';
 import { authActionCreator } from './store/actionStore';
 import { useAppDispatch, useAppSelector } from './store/store';
+import { useAuthState } from "react-firebase-hooks/auth";
+import { Loader } from './components/Loader/Loader';
 
 function App() {
 
   const dispatch = useAppDispatch();
   const auth = getAuth();
+  const [user, loading, error] = useAuthState(auth);
   
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -26,9 +29,17 @@ function App() {
     return unsubscribe;
   }, []);
 
-  const state = useAppSelector(state => state.auth);  
+  if(loading) {
+    return (
+      <Loader />
+    )
+  }
 
-  if (state.id && state.email) {
+  if(error) {
+    console.log(error);
+  }
+
+  if (user) {
     return (
       <Routes>
         <Route path={RoutePath.ROOT} element={<Chat />}>
