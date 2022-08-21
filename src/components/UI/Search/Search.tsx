@@ -1,8 +1,14 @@
+import React from 'react';
 import './Search.scss'
 
-const Search = ({value, setValue}) => {
+type SearchProps = {
+  value: string;
+  setValue: React.Dispatch<React.SetStateAction<string>>;
+}
 
-  const handleChange = (event) => {
+const Search = ({value, setValue}: SearchProps) => {
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
   }
 

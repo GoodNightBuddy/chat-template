@@ -1,8 +1,14 @@
-import React from 'react';
+import { IMessage } from '../../store/messages/actions';
+import { IUser } from '../../store/users/actions';
 import Chatter from '../Chatter/Chatter';
 import './ChatterList.scss'
 
-const ChatterList = ({users, messages}) => {
+type ChatterListProps = {
+  users: IUser[];
+  messages: IMessage[];
+}
+
+const ChatterList = ({users, messages}: ChatterListProps) => {
   return (
     <div className="chattersList">
       <h1 className="chattersList__title">Chats</h1>

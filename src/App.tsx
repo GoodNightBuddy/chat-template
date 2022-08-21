@@ -1,4 +1,4 @@
-import { getAuth, getIdToken, getIdTokenResult, onAuthStateChanged } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import ChatBody from './components/ChatBody/ChatBody';
@@ -24,9 +24,9 @@ function App() {
       }
     })
     return unsubscribe;
-  });
+  }, []);
 
-  const state = useAppSelector(state => state.auth);
+  const state = useAppSelector(state => state.auth);  
 
   if (state.id && state.email) {
     return (

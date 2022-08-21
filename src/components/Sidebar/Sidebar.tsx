@@ -1,5 +1,5 @@
 import { deleteUser, getAuth, signOut } from 'firebase/auth';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useAppSelector } from '../../store/store';
 import ChatterList from '../ChatterList/ChatterList';
 import Search from '../UI/Search/Search';
@@ -7,22 +7,18 @@ import UserIcon from '../UI/UserIcon/UserIcon';
 import "./Sidebar.scss"
 
 const Sidebar = () => {
-  const [searchedUsers, setSearchedUsers] = useState([]);
   const [search, setSearch] = useState('');
   const [users, messages] = useAppSelector(state => [state.user.users, state.message.messages]);
 
-  useEffect(() => {
-    setSearchedUsers(users)
-  }, [])
-
-  useEffect(() => {
-    setSearchedUsers(users.filter(u => u.name.toLowerCase().includes(search.toLowerCase())))
-    // eslint-disable-next-line
-  }, [search, users]);
+  const searchedUsers = (users.filter(u => u.name.toLowerCase().includes(search.toLowerCase())))
 
   const signOuntHandler = () => {
     const auth = getAuth();
     const user = auth.currentUser;
+    if (!user) {
+      console.log('Oops, something went wrong -  nu such user');
+      return
+    }
     deleteUser(user)
       .then(() => {
       })

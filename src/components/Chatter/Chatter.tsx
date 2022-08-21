@@ -2,9 +2,19 @@ import { useEffect, useState } from 'react';
 import UserIcon from "../UI/UserIcon/UserIcon";
 import { Link } from "react-router-dom";
 import RoutePath from '../../enums/routes';
+import { IUser } from '../../store/users/actions';
+import { IMessage } from '../../store/messages/actions';
+import { DateTimeFormatOptions } from '../Message/Message';
 
-const Chatter = ({ user, messages }) => {
-  const timeOptions = {
+type ChatterProps = {
+  user: IUser;
+  messages: IMessage[];
+}
+
+
+
+const Chatter = ({ user, messages }: ChatterProps) => {
+  const timeOptions: DateTimeFormatOptions = {
     month: "short",
     day: "numeric",
     year: "numeric",
@@ -14,7 +24,7 @@ const Chatter = ({ user, messages }) => {
 
   useEffect(() => {
     const sortMessages = [...messages]
-    sortMessages.sort((a, b) => new Date(b.time) - new Date(a.time))
+    sortMessages.sort((a, b) => new Date(a.time) > new Date(b.time) ? 1 : -1);
 
     if (sortMessages.length) {
       setLastMessage(sortMessages[0].text);

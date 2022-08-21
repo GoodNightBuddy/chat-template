@@ -17,7 +17,7 @@ const ChatBody = () => {
 
   if(!user) {
     return (
-      <div>Beda, user ne naiden...</div> 
+      <div>Oops, somthing went wrong, no such user</div> 
     )
   }
 

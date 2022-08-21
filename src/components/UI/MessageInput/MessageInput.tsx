@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {KeyboardEvent, useState} from 'react';
 import'./MessageInput.scss';
 import {useParams} from "react-router-dom";
 import { useAppDispatch } from '../../../store/store';
@@ -7,11 +7,11 @@ import { messageActionCreator } from '../../../store/actionStore';
 const MessageInput = () => {
   const [value, setValue] = useState('');
   const dispatch = useAppDispatch();
-  const params = useParams();
+  const {id} = useParams();
 
-  const createMessage = (text, receiver = false) => {
+  const createMessage = (text: string, receiver = false) => {
     return {
-      chatId: +params.id,
+      chatId: id? +id: null,
       id: Math.random(),
       receiver,
       text,
@@ -19,11 +19,9 @@ const MessageInput = () => {
     }
   }
 
-  function handleKeypress(e) {
+  function handleKeypress (e: KeyboardEvent) {
     if (e.keyCode === 13 && value.trim() !== '') {
       dispatch(messageActionCreator.setMessage(createMessage(value)));
-
-      
 
       fetch('https://api.chucknorris.io/jokes/random', {method: 'GET'})
         .then(res => res.json())
