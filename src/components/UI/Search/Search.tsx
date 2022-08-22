@@ -1,4 +1,5 @@
-import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import './Search.scss'
 
 type SearchProps = {
@@ -6,7 +7,7 @@ type SearchProps = {
   setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Search = ({value, setValue}: SearchProps) => {
+const Search = ({ value, setValue }: SearchProps) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue(event.target.value);
@@ -21,6 +22,10 @@ const Search = ({value, setValue}: SearchProps) => {
         value={value}
         onChange={handleChange}
       />
+      {/* <FontAwesomeIcon icon={faSearch} style={{fontWeight: 'lighter'}}/> */}
+      <div className='search-icon'>
+        <i className="fa fa-search"></i>
+      </div>
     </div>
   );
 };

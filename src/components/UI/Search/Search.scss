@@ -1,11 +1,9 @@
 @import "../../../vars/vars";
 
-
 .search {
   box-sizing: border-box;
   width: 100%;
 
-  background-image: url('loupe.png');
   background-position: 10px 8px;
   background-repeat: no-repeat;
   background-color: $background-primary;
@@ -15,4 +13,12 @@
   margin-top: 30px;
   border: 1px solid #ddd;
   border-radius: 20px;
+}
+
+.search-icon {
+  position: absolute;
+  font-size: x-large;
+  top: 100px;
+  left: 17px;
+  opacity: 0.35;
 }
