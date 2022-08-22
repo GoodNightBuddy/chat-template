@@ -39,7 +39,7 @@ const MessageInput = () => {
         setTimeout(() => {
           dispatch(messageActionCreator.setMessage(createMessage(data.value, true)));
           dispatch(userActionCreator.sortUsers(id))
-        }, 10000)
+        }, (Math.random() * 5 + 10) * 1000)
       })
     setValue('');
   }
