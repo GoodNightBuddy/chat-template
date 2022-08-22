@@ -24,7 +24,7 @@ const ChatBody = () => {
   return (
     <div className="chat__body">
       <div className="chat__header">
-        <UserIcon imgUrl={user.photoURL} />
+        <UserIcon imgUrl={user.photoURL} online={user.online} />
         <h1 className="chat__username">{user.name}</h1>
       </div>
 

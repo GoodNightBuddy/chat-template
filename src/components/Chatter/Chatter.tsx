@@ -23,7 +23,7 @@ const Chatter = ({ user, messages }: ChatterProps) => {
 
   useEffect(() => {
     const sortMessages = [...messages]
-    sortMessages.sort((a, b) => new Date(a.time) > new Date(b.time) ? 1 : -1);
+    sortMessages.sort((a, b) => new Date(a.time) < new Date(b.time) ? 1 : -1);
 
     if (sortMessages.length) {
       setLastMessage(sortMessages[0].text);
@@ -40,7 +40,7 @@ const Chatter = ({ user, messages }: ChatterProps) => {
         <div className="chatter__info">
           <UserIcon
             imgUrl={user.photoURL}
-            read={user.read}
+            online={user.online}
           />
           <div className="chatter__detail">
             <div className="chatter__detail-header">

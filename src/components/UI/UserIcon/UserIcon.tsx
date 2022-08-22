@@ -3,10 +3,10 @@ import './UserIcon.scss';
 
 type UserIconProps = {
   imgUrl?: string;
-  read?: boolean;
+  online?: boolean;
 }
 
-const UserIcon = ({imgUrl, read = false}: UserIconProps) => {
+const UserIcon = ({imgUrl, online}: UserIconProps) => {
   const defaultImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf-_eFTxpPLfn16swgOup3z7QLLblNK_mq2Q&usqp=CAU"
   return (
     <div className={'user__icon'}>
@@ -15,7 +15,7 @@ const UserIcon = ({imgUrl, read = false}: UserIconProps) => {
         alt="userName"
         className={'icon'}
       />
-      {read && <img
+      {online && <img
         src={checked}
         alt="read"
         className={'user__read'}

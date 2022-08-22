@@ -5,11 +5,16 @@ export interface IUser {
   id: number;
   name: string;
   photoURL: string;
-  read: boolean;
+  online: boolean;
 }
 
 interface IUserState {
   users: IUser[]
+}
+
+type SetUserAction = {
+  payload: IUser[];
+  type: string;
 }
 
 const initialState: IUserState = {
@@ -20,11 +25,16 @@ const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setUsers(state, action) {
+    setUsers(state, action: SetUserAction) {
       state.users = action.payload;
+    },
+    sortUsers(state, action) {
+      const index = state.users.findIndex(user => user.id === +action.payload)
+      state.users.unshift(state.users[index])
+      state.users.splice(index + 1, 1)
     }
   }
 })
 
-export const { setUsers} = userSlice.actions;
+export const { setUsers, sortUsers} = userSlice.actions;
 export default userSlice.reducer;

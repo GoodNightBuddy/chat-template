@@ -1,17 +1,19 @@
-import {KeyboardEvent, useState} from 'react';
-import'./MessageInput.scss';
-import {useParams} from "react-router-dom";
+import { KeyboardEvent, useState } from 'react';
+import './MessageInput.scss';
+import { useParams } from "react-router-dom";
 import { useAppDispatch } from '../../../store/store';
-import { messageActionCreator } from '../../../store/actionStore';
+import { messageActionCreator, userActionCreator } from '../../../store/actionStore';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 const MessageInput = () => {
   const [value, setValue] = useState('');
   const dispatch = useAppDispatch();
-  const {id} = useParams();
+  const { id } = useParams();
 
   const createMessage = (text: string, receiver = false) => {
     return {
-      chatId: id? +id: null,
+      chatId: id ? +id : null,
       id: Math.random(),
       receiver,
       text,
@@ -19,20 +21,27 @@ const MessageInput = () => {
     }
   }
 
-  function handleKeypress (e: KeyboardEvent) {
-    if (e.keyCode === 13 && value.trim() !== '') {
-      dispatch(messageActionCreator.setMessage(createMessage(value)));
-
-      fetch('https://api.chucknorris.io/jokes/random', {method: 'GET'})
-        .then(res => res.json())
-        .then(data => {
-          setTimeout(() => {
-            dispatch(messageActionCreator.setMessage(createMessage(data.value, true)));
-
-          }, 10000)
-        })
-      setValue('')
+  function handleKeypress(e: KeyboardEvent) {
+    if (e.keyCode === 13) {
+      sendMessage();
     }
+  }
+
+  function sendMessage(): void {
+    if (value.trim() === '') return
+
+    dispatch(messageActionCreator.setMessage(createMessage(value)));
+    dispatch(userActionCreator.sortUsers(id))
+
+    fetch('https://api.chucknorris.io/jokes/random', { method: 'GET' })
+      .then(res => res.json())
+      .then(data => {
+        setTimeout(() => {
+          dispatch(messageActionCreator.setMessage(createMessage(data.value, true)));
+          dispatch(userActionCreator.sortUsers(id))
+        }, 10000)
+      })
+    setValue('');
   }
 
   return (
@@ -45,6 +54,7 @@ const MessageInput = () => {
         onChange={(e) => setValue(e.target.value)}
         onKeyUp={handleKeypress}
       />
+      <FontAwesomeIcon icon={faPaperPlane} className="icon-send" onClick={sendMessage} />
     </div>
   );
 };

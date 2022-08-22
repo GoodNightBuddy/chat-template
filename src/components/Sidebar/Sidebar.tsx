@@ -4,7 +4,11 @@ import { useAppSelector } from '../../store/store';
 import ChatterList from '../ChatterList/ChatterList';
 import Search from '../UI/Search/Search';
 import UserIcon from '../UI/UserIcon/UserIcon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan, faRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import "./Sidebar.scss"
+
+
 
 const Sidebar = () => {
 
@@ -13,9 +17,9 @@ const Sidebar = () => {
   const [users, messages] = useAppSelector(state => [state.user.users, state.message.messages]);
 
   const auth = getAuth();
-  const user = auth.currentUser;
+  const authUser = auth.currentUser;
 
-  if (!user) {
+  if (!authUser) {
     return (
       <div>Oops, something went wrong, no such user</div>
     )
@@ -28,7 +32,7 @@ const Sidebar = () => {
   };
 
   const deleteHandler = () => {
-    deleteUser(user)
+    deleteUser(authUser)
       .catch((error) => {
         console.log(error);
       });
@@ -40,14 +44,16 @@ const Sidebar = () => {
         <div className='user-info'>
           <div className='for-dropdown'>
             <UserIcon
-              imgUrl={user.photoURL || defaultImage}
+              imgUrl={authUser.photoURL || defaultImage}
             />
             <ul className="dropdown">
-              <li onClick={signOuntHandler}><i className="fa-solid fa-right-from-bracket"></i>Sign out</li>
-              <li onClick={deleteHandler}><i className="fa-solid fa-right-from-bracket"></i>Delete account</li>
+              <li onClick={signOuntHandler}><FontAwesomeIcon icon={faRightFromBracket} />Sign out</li>
+              <li onClick={deleteHandler}><FontAwesomeIcon icon={faTrashCan} />Delete account</li>
+              
+
             </ul>
           </div>
-          <div className='user-info__user-name'>{user?.displayName || user?.email}</div>
+          <div className='user-info__user-name'>{authUser.displayName || authUser.email}</div>
         </div>
 
         <Search value={search} setValue={setSearch} />

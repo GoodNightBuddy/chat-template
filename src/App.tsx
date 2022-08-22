@@ -7,20 +7,21 @@ import SignInPage from './components/pages/SignInPage/SignInPage';
 import SignUpPage from './components/pages/SignUpPage/SignUpPage';
 import RoutePath from './enums/routes';
 import { authActionCreator } from './store/actionStore';
-import { useAppDispatch, useAppSelector } from './store/store';
+import { useAppDispatch} from './store/store';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Loader } from './components/Loader/Loader';
+import 'font-awesome/css/font-awesome.min.css';
 
 function App() {
 
   const dispatch = useAppDispatch();
   const auth = getAuth();
-  const [user, loading, error] = useAuthState(auth);
+  const [authUser, loading, error] = useAuthState(auth);
   
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const { email, uid: id, photoURL, displayName } = user;
+    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+      if (authUser) {
+        const { email, uid: id, photoURL, displayName } = authUser;
         dispatch(authActionCreator.setUser({ email, id, photoURL, displayName }))
       } else {
         dispatch(authActionCreator.removeUser())
@@ -39,7 +40,7 @@ function App() {
     console.log(error);
   }
 
-  if (user) {
+  if (authUser) {
     return (
       <Routes>
         <Route path={RoutePath.ROOT} element={<Chat />}>

@@ -4,7 +4,6 @@
   box-sizing: border-box;
   width: 100%;
 
-  background-image: url('send.png');
   background-position: 97% 20px;
   background-repeat: no-repeat;
 
@@ -12,4 +11,15 @@
   padding: 20px 45px 20px 40px;
   border: 1px solid #ddd;
   border-radius: 40px;
+
+
+}
+
+.icon-send {
+  position: absolute;
+  top: 43%;
+  cursor: pointer;
+  right: 9%;
+  font-size: 20px;
+
 }
