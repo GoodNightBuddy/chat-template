@@ -1,4 +1,5 @@
-import checked from "./checked.png";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleCheck } from '@fortawesome/free-regular-svg-icons';
 import './UserIcon.scss';
 
 type UserIconProps = {
@@ -15,12 +16,7 @@ const UserIcon = ({imgUrl, online}: UserIconProps) => {
         alt="userName"
         className={'icon'}
       />
-      {online && <img
-        src={checked}
-        alt="read"
-        className={'user__read'}
-      />
-      }
+      {online && <FontAwesomeIcon icon={faCircleCheck} className="user__icon-online"/>}
     </div>
   );
 };
